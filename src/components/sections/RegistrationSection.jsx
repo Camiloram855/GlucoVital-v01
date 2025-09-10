@@ -3,7 +3,7 @@ import RegistrationForm from "../RegistrationForm"
 
 export default function RegistrationSection() {
   return (
-    <section className="py-20 px-4 bg-emerald-50">
+    <section id="registro" className="py-20 px-4 bg-emerald-50">
       <div className="max-w-4xl mx-auto">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-8">
           Regístrate Ahora

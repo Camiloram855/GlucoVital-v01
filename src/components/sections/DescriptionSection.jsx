@@ -58,6 +58,12 @@ export default function DescriptionSection() {
               <Button
                 size="lg"
                 className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 text-lg font-semibold rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl"
+                onClick={() => {
+                  const el = document.getElementById("registro")
+                  if (el) {
+                    el.scrollIntoView({ behavior: "smooth" })
+                  }
+                }}
               >
                 Comprar ahora
               </Button>

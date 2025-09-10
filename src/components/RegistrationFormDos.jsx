@@ -10,14 +10,11 @@ import {
   AlertCircle,
 } from "lucide-react"
 
-export default function RegistrationForm() {
+export default function RegistrationFormDos() {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
   })
-
-  const [loading, setLoading] = useState(false)
-  const [success, setSuccess] = useState(null)
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
@@ -27,38 +24,10 @@ export default function RegistrationForm() {
     }))
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
-    setLoading(true)
-    setSuccess(null)
-
-    // Adaptamos los nombres al backend (nombre, celular)
-    const payload = {
-      nombre: formData.name,
-      celular: formData.phone,
-    }
-
-    try {
-      const response = await fetch("http://localhost:8080/api/registros", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      })
-
-      if (response.ok) {
-        setSuccess(true)
-        setFormData({ name: "", phone: "" })
-      } else {
-        setSuccess(false)
-      }
-    } catch (error) {
-      console.error("Error al enviar datos:", error)
-      setSuccess(false)
-    } finally {
-      setLoading(false)
-    }
+    console.log("Form submitted:", formData)
+    // Aquí va la lógica de registro/envío al backend
   }
 
   return (
@@ -221,24 +190,11 @@ export default function RegistrationForm() {
 
             <button
               type="submit"
-              disabled={loading}
               className="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-6 rounded-lg text-lg transition-all duration-200 hover:scale-105 transform"
             >
-              {loading ? "Enviando..." : "¡PÍDELO AHORA!"}
+              ¡PÍDELO AHORA!
             </button>
           </form>
-
-          {/* Mensajes de confirmación */}
-          {success === true && (
-            <p className="mt-4 text-green-600 font-semibold">
-              ✅ Tus datos fueron enviados con éxito.
-            </p>
-          )}
-          {success === false && (
-            <p className="mt-4 text-red-600 font-semibold">
-              ❌ Ocurrió un error al enviar tus datos.
-            </p>
-          )}
 
           {/* Aviso */}
           <div className="mt-6 bg-white border border-gray-200 rounded-lg p-4 flex items-start gap-3">

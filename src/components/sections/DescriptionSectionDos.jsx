@@ -19,7 +19,7 @@ export default function DescriptionSectionDos() {
           {/* Contenido de texto */}
           <div className="order-2 lg:order-1 space-y-8">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
-              Descubre GlucoVital
+              ¿Está cansado de los medicamentos tradicionales? 
             </h2>
 
             <div className="space-y-6 text-lg leading-relaxed text-gray-700">

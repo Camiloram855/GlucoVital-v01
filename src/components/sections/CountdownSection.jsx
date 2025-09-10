@@ -41,7 +41,15 @@ export default function CountdownSection() {
           </div>
         ))}
       </div>
-      <Button className="px-8 py-4 text-lg rounded-full shadow-lg flex items-center mx-auto">
+      <Button
+        className="px-8 py-4 text-lg rounded-full shadow-lg flex items-center mx-auto"
+        onClick={() => {
+          const el = document.getElementById("registro")
+          if (el) {
+            el.scrollIntoView({ behavior: "smooth" })
+          }
+        }}
+      >
         <Clock className="w-5 h-5 mr-2" />
         Comprar con Descuento
       </Button>
