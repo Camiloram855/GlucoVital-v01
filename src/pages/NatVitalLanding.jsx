@@ -11,21 +11,24 @@ import DescriptionSectionDos from "../components/sections/DescriptionSectionDos"
 import RibbonButton from "../components/ui/RibbonButton"
 import GlucoVitalSection from "../components/sections/GlucoVitalSection"
 import FaqSection from "../components/sections/FaqSection"
+import ReviewsSection from "../components/sections/ReviewsSection"
 
 export default function NatVitalLanding() {
   return (
     <div className="min-h-screen bg-white flex flex-col">
       <main className="flex-grow">
         <HeroSection />
-        <RegistrationSectionDos />
         <ProductCarousel />
+        <RegistrationSectionDos />
         <GlucoVitalSection />
         <DescriptionSection />
         <BenefitsSection />
         <CountdownSection />
         <DescriptionSectionDos />
+        <ReviewsSection />
         <RegistrationSection />
         <FaqSection />
+        
 
       </main>
       <Footer /> {/* 👈 Footer agregado */}

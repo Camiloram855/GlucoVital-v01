@@ -12,7 +12,7 @@ export default function RibbonDiagonal() {
             transform: "translate(36%, 15%) rotate(-45deg)", // 🔹 ángulo diagonal
           }}
         >
-          GlucoVItal
+          GlucoVital
         </div>
       </a>
     )

@@ -11,7 +11,7 @@ export default function DescriptionSectionDos() {
               <img
                 src={productoImg} // ahora usa la importación
                 alt="Frasco de NatVital - Producto natural para el bienestar"
-                className="w-[500px] h-[500px] object-contain drop-shadow-2xl"
+                className="w-[800px] h-[500px] object-contain drop-shadow-2xl"
               />
             </div>
           </div>
