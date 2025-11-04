@@ -27,34 +27,34 @@ export default function RegistrationForm() {
     }))
   }
 
-  // 🔥 ESTE ES EL NUEVO handleSubmit CONECTADO A MAKE
   const handleSubmit = async (e) => {
     e.preventDefault()
     setLoading(true)
     setSuccess(null)
 
+    // Adaptamos los nombres al backend (nombre, celular)
+    const payload = {
+      nombre: formData.name,
+      celular: formData.phone,
+    }
+
     try {
-      // Cambia esta URL por la de tu webhook de Make
-      const webhookUrl = "https://hook.eu1.make.com/https://hook.eu2.make.com/1m89e6tti3wgtoh9xqzbm89k3qubtcia"
-
-      const payload = {
-        nombre: formData.name,
-        telefono: formData.phone,
-        origen: "landing_glucovital",
-      }
-
-      const res = await fetch(webhookUrl, {
+      const response = await fetch("http://localhost:8080/api/registros", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify(payload),
       })
 
-      if (!res.ok) throw new Error("Error al enviar al webhook")
-
-      setSuccess(true)
-      setFormData({ name: "", phone: "" })
+      if (response.ok) {
+        setSuccess(true)
+        setFormData({ name: "", phone: "" })
+      } else {
+        setSuccess(false)
+      }
     } catch (error) {
-      console.error("Error al enviar a Make:", error)
+      console.error("Error al enviar datos:", error)
       setSuccess(false)
     } finally {
       setLoading(false)
@@ -228,15 +228,15 @@ export default function RegistrationForm() {
             </button>
           </form>
 
-          {/* Mensajes */}
+          {/* Mensajes de confirmación */}
           {success === true && (
             <p className="mt-4 text-green-600 font-semibold">
-              ✅ Su registro ha sido exitoso. En un momento un especialista se comunicará con usted.
+              ✅ Tus datos fueron enviados con éxito.
             </p>
           )}
           {success === false && (
             <p className="mt-4 text-red-600 font-semibold">
-              ❌ Ocurrió un error al enviar el registro. Intente de nuevo.
+              ❌ Ocurrió un error al enviar tus datos.
             </p>
           )}
 
@@ -244,8 +244,8 @@ export default function RegistrationForm() {
           <div className="mt-6 bg-white border border-gray-200 rounded-lg p-4 flex items-start gap-3">
             <AlertCircle className="w-5 h-5 text-pink-500 flex-shrink-0 mt-0.5" />
             <p className="text-sm text-gray-600 leading-relaxed">
-              Nuestros expertos asesores te contactarán por WhatsApp o llamada
-              para confirmar tus datos y responder tus preguntas.
+              Nuestros expertos asesores te llamarán a la brevedad para confirmar
+              tus datos y responder a cualquier pregunta.
             </p>
           </div>
         </div>
