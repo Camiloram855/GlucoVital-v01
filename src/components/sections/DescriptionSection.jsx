@@ -20,7 +20,7 @@ export default function DescriptionSection() {
 
           {/* Contenido de texto */}
           <div className="order-2 lg:order-1 space-y-8">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
+            <h2 className="text-4xl md:text-5xl font-bold text-green-800 leading-tight">
               Descubre GlucoVital
             </h2>
 

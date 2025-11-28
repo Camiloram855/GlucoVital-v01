@@ -13,10 +13,13 @@ import GlucoVitalSection from "../components/sections/GlucoVitalSection"
 import FaqSection from "../components/sections/FaqSection"
 import ReviewsSection from "../components/sections/ReviewsSection"
 
+
 export default function NatVitalLanding() {
   return (
     <div className="min-h-screen bg-white flex flex-col">
       <main className="flex-grow">
+
+
         <HeroSection />
         <ProductCarousel />
         <RegistrationSectionDos />

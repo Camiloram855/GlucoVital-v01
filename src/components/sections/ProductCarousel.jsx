@@ -44,7 +44,7 @@ export default function ProductCarousel() {
   const product = products[currentIndex]
 
   return (
-    <section className="w-full bg-white py-16">
+    <section className="w-full bg-white py-16 px-8">
       <div className="max-w-5xl mx-auto flex flex-col items-center text-center px-6">
         <h2 className="text-4xl font-bold text-green-700 mb-12">
           Presentaciones del Producto
@@ -78,13 +78,13 @@ export default function ProductCarousel() {
           {/* Botones navegación */}
           <button
             onClick={prevSlide}
-            className="absolute top-1/2 -left-12 transform -translate-y-1/2 bg-green-600 text-white p-3 rounded-full shadow hover:bg-green-700 transition"
+            className="absolute top-1/2 -left-12 transform -translate-y-1/2 bg-green-600 text-white p-2 rounded-full shadow hover:bg-green-700 transition"
           >
             <ChevronLeft size={24} />
           </button>
           <button
             onClick={nextSlide}
-            className="absolute top-1/2 -right-12 transform -translate-y-1/2 bg-green-600 text-white p-3 rounded-full shadow hover:bg-green-700 transition"
+            className="absolute top-1/2 -right-12 transform -translate-y-1/2 bg-green-600 text-white p-2 rounded-full shadow hover:bg-green-700 transition"
           >
             <ChevronRight size={24} />
           </button>

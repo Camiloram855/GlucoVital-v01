@@ -17,7 +17,6 @@ export default function RegistrationForm() {
   })
 
   const [loading, setLoading] = useState(false)
-  const [success, setSuccess] = useState(null)
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
@@ -27,38 +26,28 @@ export default function RegistrationForm() {
     }))
   }
 
-  // 🔥 ESTE ES EL NUEVO handleSubmit CONECTADO A MAKE
-  const handleSubmit = async (e) => {
+  // 🔥 NUEVO handleSubmit — SIN BACKEND — ENVÍA A WHATSAPP
+  const handleSubmit = (e) => {
     e.preventDefault()
     setLoading(true)
-    setSuccess(null)
 
-    try {
-      // Cambia esta URL por la de tu webhook de Make
-      const webhookUrl = "https://hook.eu1.make.com/https://hook.eu2.make.com/1m89e6tti3wgtoh9xqzbm89k3qubtcia"
+    const message = `
+¡Nuevo registro desde la landing GlucoVital!
 
-      const payload = {
-        nombre: formData.name,
-        telefono: formData.phone,
-        origen: "landing_glucovital",
-      }
+👤 Nombre: ${formData.name}
+📱 Teléfono: ${formData.phone}
 
-      const res = await fetch(webhookUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      })
+Por favor continuar con la atención al cliente.
+    `.trim()
 
-      if (!res.ok) throw new Error("Error al enviar al webhook")
+    const phoneNumber = "573134203038" // ← WhatsApp en formato internacional
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
 
-      setSuccess(true)
-      setFormData({ name: "", phone: "" })
-    } catch (error) {
-      console.error("Error al enviar a Make:", error)
-      setSuccess(false)
-    } finally {
-      setLoading(false)
-    }
+    // abrir WhatsApp
+    window.open(url, "_blank")
+
+    setLoading(false)
+    setFormData({ name: "", phone: "" })
   }
 
   return (
@@ -73,7 +62,6 @@ export default function RegistrationForm() {
 
           {/* Pasos */}
           <div className="space-y-6">
-            {/* Paso 1 */}
             <div className="flex items-start gap-4">
               <div className="flex-shrink-0 w-12 h-12 bg-pink-500 rounded-full flex items-center justify-center text-white font-bold text-lg">
                 1
@@ -81,13 +69,11 @@ export default function RegistrationForm() {
               <div>
                 <h3 className="font-semibold text-gray-800 mb-1">PASO 1</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  <strong>Comparte tus datos:</strong> Ingresa tu nombre y
-                  número de teléfono en el formulario seguro.
+                  <strong>Comparte tus datos:</strong> Ingresa tu nombre y número de teléfono.
                 </p>
               </div>
             </div>
 
-            {/* Paso 2 */}
             <div className="flex items-start gap-4">
               <div className="flex-shrink-0 w-12 h-12 bg-pink-500 rounded-full flex items-center justify-center text-white">
                 <Phone className="w-6 h-6" />
@@ -95,13 +81,11 @@ export default function RegistrationForm() {
               <div>
                 <h3 className="font-semibold text-gray-800 mb-1">PASO 2</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  <strong>Habla con nosotros:</strong> Un asesor experto te
-                  llamará para confirmar tu pedido y responder cualquier duda.
+                  <strong>Habla con nosotros:</strong> Un especialista te contactará.
                 </p>
               </div>
             </div>
 
-            {/* Paso 3 */}
             <div className="flex items-start gap-4">
               <div className="flex-shrink-0 w-12 h-12 bg-pink-500 rounded-full flex items-center justify-center text-white">
                 <Truck className="w-6 h-6" />
@@ -109,86 +93,45 @@ export default function RegistrationForm() {
               <div>
                 <h3 className="font-semibold text-gray-800 mb-1">PASO 3</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  <strong>Recibe y paga:</strong> ¡Tu producto llegará rápido!
-                  Paga cómodamente al recibirlo.
+                  <strong>Recibe y paga:</strong> Contra entrega.
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Íconos de características */}
+          {/* Iconos */}
           <div className="flex justify-center md:justify-start gap-8 pt-8">
             <div className="text-center">
               <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-2">
                 <Shield className="w-6 h-6 text-gray-600" />
               </div>
-              <p className="text-xs text-gray-600 font-medium">
-                Compra <br /> Segura
-              </p>
+              <p className="text-xs text-gray-600 font-medium">Compra Segura</p>
             </div>
             <div className="text-center">
               <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-2">
                 <Truck className="w-6 h-6 text-gray-600" />
               </div>
-              <p className="text-xs text-gray-600 font-medium">
-                Envíos <br /> Rápidos
-              </p>
+              <p className="text-xs text-gray-600 font-medium">Envíos Rápidos</p>
             </div>
             <div className="text-center">
               <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-2">
                 <CreditCard className="w-6 h-6 text-gray-600" />
               </div>
-              <p className="text-xs text-gray-600 font-medium">
-                Contra <br /> Reembolso
-              </p>
+              <p className="text-xs text-gray-600 font-medium">Pago Contra Entrega</p>
             </div>
           </div>
         </div>
 
         {/* Columna Derecha - Formulario */}
         <div className="bg-yellow-50 border-2 border-yellow-200 rounded-xl p-8 shadow-md">
-          {/* Oferta */}
-          <div className="text-center mb-6">
-            <h3 className="text-2xl md:text-3xl font-bold text-pink-600 mb-2">
-              ¡OFERTA 50% OFF!
-            </h3>
-            <p className="text-gray-600 mb-4">
-              Aprovecha esta rebaja exclusiva:
-            </p>
 
-            {/* Precios */}
-            <div className="flex items-center justify-center gap-4 mb-4">
-              <span className="text-lg text-gray-500 line-through animate-[zoom_1.5s_ease-in-out_infinite]">
-                $238000
-              </span>
-              <span className="text-3xl font-bold text-green-600 animate-[zoom_1.5s_ease-in-out_infinite]">
-                $119000
-              </span>
-            </div>
-
-            {/* Badge de descuento */}
-            <div className="inline-flex items-center gap-3 mb-6">
-              <div className="bg-green-500 text-white rounded-full w-16 h-16 flex items-center justify-center font-bold text-sm leading-tight text-center">
-                50% <br /> HOY
-              </div>
-              <p className="text-sm text-gray-600">
-                ¡No te lo pierdas! ¡Pocas unidades a este{" "}
-                <span className="text-pink-600 font-semibold">
-                  precio especial
-                </span>
-                !
-              </p>
-            </div>
-          </div>
-
-          {/* Formulario */}
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 ¿CUÁL ES TU NOMBRE?
               </label>
               <div className="relative">
-                <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <User className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
                 <input
                   type="text"
                   name="name"
@@ -206,7 +149,7 @@ export default function RegistrationForm() {
                 ¿CUÁL ES TU NÚMERO DE TELÉFONO?
               </label>
               <div className="relative">
-                <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <Phone className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
                 <input
                   type="tel"
                   name="phone"
@@ -222,47 +165,20 @@ export default function RegistrationForm() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-6 rounded-lg text-lg transition-all duration-200 hover:scale-105 transform"
+              className="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-6 rounded-lg text-lg transition-all duration-200 hover:scale-105"
             >
               {loading ? "Enviando..." : "¡PÍDELO AHORA!"}
             </button>
           </form>
 
-          {/* Mensajes */}
-          {success === true && (
-            <p className="mt-4 text-green-600 font-semibold">
-              ✅ Su registro ha sido exitoso. En un momento un especialista se comunicará con usted.
-            </p>
-          )}
-          {success === false && (
-            <p className="mt-4 text-red-600 font-semibold">
-              ❌ Ocurrió un error al enviar el registro. Intente de nuevo.
-            </p>
-          )}
-
-          {/* Aviso */}
           <div className="mt-6 bg-white border border-gray-200 rounded-lg p-4 flex items-start gap-3">
-            <AlertCircle className="w-5 h-5 text-pink-500 flex-shrink-0 mt-0.5" />
+            <AlertCircle className="w-5 h-5 text-pink-500 mt-0.5" />
             <p className="text-sm text-gray-600 leading-relaxed">
-              Nuestros expertos asesores te contactarán por WhatsApp o llamada
-              para confirmar tus datos y responder tus preguntas.
+              Te contactaremos por WhatsApp o llamada después del registro.
             </p>
           </div>
         </div>
       </div>
-
-      {/* Animación personalizada */}
-      <style jsx>{`
-        @keyframes zoom {
-          0%,
-          100% {
-            transform: scale(1);
-          }
-          50% {
-            transform: scale(1.15);
-          }
-        }
-      `}</style>
     </div>
   )
 }

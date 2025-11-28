@@ -39,10 +39,10 @@ export default function FaqSection() {
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       {/* Header */}
       <div className="text-center mb-12">
-        <h1 className="text-3xl sm:text-4xl font-bold text-purple-900 mb-4">
+        <h1 className="text-3xl sm:text-4xl font-bold text-green-800 mb-4">
           Preguntas Frecuentes
         </h1>
-        <p className="text-gray-600 text-lg">
+        <p className="text-gray-600 text-lg text-green-800">
           Antes de contactarnos, por favor lee las siguientes respuestas con cuidado:
         </p>
       </div>
@@ -64,7 +64,7 @@ export default function FaqSection() {
                 onClick={() => toggleItem(index)}
                 className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-200 focus:outline-none"
               >
-                <span className="font-bold text-purple-900 text-lg pr-4">
+                <span className="font-bold text-green-800 text-lg pr-4">
                   {item.question}
                 </span>
                 {isOpen ? (
