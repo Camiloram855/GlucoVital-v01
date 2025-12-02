@@ -1,5 +1,4 @@
 import { Button } from "../ui/button"
-// Importa la imagen desde tu carpeta local
 import productoImg from "../../img/NatVital-5.png"
 
 export default function DescriptionSection() {
@@ -7,13 +6,20 @@ export default function DescriptionSection() {
     <section id="descripcion" className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
           {/* Imagen del producto */}
           <div className="order-1 lg:order-2 flex justify-center">
-            <div className="relative">
+            <div className="relative w-full flex justify-center">
               <img
-                src={productoImg} // ahora usa la importación
+                src={productoImg}
                 alt="Frasco de NatVital - Producto natural para el bienestar"
-                className="w-[500px] h-[500px] object-contain drop-shadow-2xl"
+                className="
+                  w-full
+                  max-w-[1500px]   /* 🔥 aumentada de verdad */
+                  h-auto
+                  object-contain
+                  drop-shadow-2xl
+                "
               />
             </div>
           </div>
@@ -69,6 +75,7 @@ export default function DescriptionSection() {
               </Button>
             </div>
           </div>
+
         </div>
       </div>
     </section>

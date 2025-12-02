@@ -1,13 +1,13 @@
 "use client"
 
 import { useState } from "react"
+import emailjs from "@emailjs/browser"
 import {
   Phone,
   User,
   Shield,
   Truck,
   CreditCard,
-  AlertCircle,
 } from "lucide-react"
 
 export default function RegistrationForm() {
@@ -27,39 +27,48 @@ export default function RegistrationForm() {
     }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     setLoading(true)
     setSuccess(null)
 
-    const mensaje = `Hola, vengo desde la página y quiero más información. Mis datos son:%0A%0A👤 Nombre: ${formData.name}%0A📞 Teléfono: ${formData.phone}`
-    const numero = "573134203038"
+    const templateParams = {
+      name: formData.name,
+      phone: formData.phone,
+    }
 
-    const url = `https://wa.me/${numero}?text=${mensaje}`
+    try {
+      // Enviar solo CORREO por EmailJS
+      await emailjs.send(
+        "service_tign351",
+        "template_cn0c8eg",
+        templateParams,
+        "kK2OReJJQoRu00rfG"
+      )
 
-    setTimeout(() => {
-      window.open(url, "_blank")
-      setLoading(false)
       setSuccess(true)
       setFormData({ name: "", phone: "" })
-    }, 600)
+    } catch (error) {
+      console.error("Error enviando email:", error)
+      setSuccess(false)
+    }
+
+    setLoading(false)
   }
 
   return (
     <div className="max-w-6xl mx-auto p-6 bg-white">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
 
-        {/* Columna Izquierda - Pasos */}
+        {/* Columna izquierda */}
         <div className="space-y-8">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-800">
             ¿Cómo registrarte en{" "}
             <span className="text-green-600">GlucoVital</span>?
           </h2>
 
-          {/* Pasos */}
+          {/* Se mantiene todo igual */}
           <div className="space-y-6">
-
-            {/* Paso 1 */}
             <div className="flex items-start gap-4">
               <div className="flex-shrink-0 w-12 h-12 bg-pink-500 rounded-full flex items-center justify-center text-white font-bold text-lg">
                 1
@@ -73,7 +82,6 @@ export default function RegistrationForm() {
               </div>
             </div>
 
-            {/* Paso 2 */}
             <div className="flex items-start gap-4">
               <div className="flex-shrink-0 w-12 h-12 bg-pink-500 rounded-full flex items-center justify-center text-white">
                 <Phone className="w-6 h-6" />
@@ -81,13 +89,12 @@ export default function RegistrationForm() {
               <div>
                 <h3 className="font-semibold text-gray-800 mb-1">PASO 2</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  <strong>Habla con nosotros:</strong> Un especialista experto te
-                  llamará para confirmar tu pedido y responder cualquier duda.
+                  <strong>Habla con nosotros:</strong> Un especialista te
+                  llamará para confirmar tu pedido.
                 </p>
               </div>
             </div>
 
-            {/* Paso 3 */}
             <div className="flex items-start gap-4">
               <div className="flex-shrink-0 w-12 h-12 bg-pink-500 rounded-full flex items-center justify-center text-white">
                 <Truck className="w-6 h-6" />
@@ -95,14 +102,13 @@ export default function RegistrationForm() {
               <div>
                 <h3 className="font-semibold text-gray-800 mb-1">PASO 3</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  <strong>Recibe y paga:</strong> ¡Tu producto llegará rápido!
-                  Paga cómodamente al recibirlo.
+                  <strong>Recibe y paga:</strong> Tu producto llegará rápido.
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Íconos */}
+          {/* ICONOS */}
           <div className="flex justify-center md:justify-start gap-8 pt-8">
             <div className="text-center">
               <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-2">
@@ -133,10 +139,9 @@ export default function RegistrationForm() {
           </div>
         </div>
 
-        {/* Columna Derecha - Formulario */}
+        {/* FORMULARIO */}
         <div className="bg-yellow-50 border-2 border-yellow-200 rounded-xl p-8 shadow-md">
 
-          {/* Texto y precios */}
           <div className="text-center mb-6">
             <h3 className="text-2xl md:text-3xl font-bold text-pink-600 mb-2">
               ¡OFERTA 50% OFF!
@@ -153,19 +158,8 @@ export default function RegistrationForm() {
                 $119000
               </span>
             </div>
-
-            <div className="inline-flex items-center gap-3 mb-6">
-              <div className="bg-green-500 text-white rounded-full w-16 h-16 flex items-center justify-center font-bold text-sm leading-tight text-center">
-                50% <br /> HOY
-              </div>
-              <p className="text-sm text-gray-600">
-                ¡No te lo pierdas! ¡Pocas unidades a este{" "}
-                <span className="text-pink-600 font-semibold">precio especial</span>!
-              </p>
-            </div>
           </div>
 
-          {/* FORMULARIO */}
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -212,7 +206,6 @@ export default function RegistrationForm() {
             </button>
           </form>
 
-          {/* Mensajes */}
           {success === true && (
             <p className="mt-4 text-green-600 font-semibold">
               ✅ Tus datos fueron enviados.
@@ -220,17 +213,6 @@ export default function RegistrationForm() {
           )}
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes zoom {
-          0%, 100% {
-            transform: scale(1);
-          }
-          50% {
-            transform: scale(1.15);
-          }
-        }
-      `}</style>
     </div>
   )
 }
