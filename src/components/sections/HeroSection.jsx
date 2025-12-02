@@ -1,6 +1,6 @@
 // src/components/sections/HeroSection.jsx
 import { Button } from "../ui/button"
-import fondo from "../../img/imagen_de_fondo.jpg"
+import fondo from "../../img/imagen_de_fondo.jpeg"
 
 export default function HeroSection() {
   return (
