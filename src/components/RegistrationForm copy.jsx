@@ -38,6 +38,7 @@ export default function RegistrationForm() {
     }
 
     try {
+      // Enviar solo CORREO por EmailJS
       await emailjs.send(
         "service_tign351",
         "template_cn0c8eg",
@@ -59,8 +60,84 @@ export default function RegistrationForm() {
     <div className="max-w-6xl mx-auto p-6 bg-white">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
 
-        {/* 👉 PRIMERO EL FORMULARIO */}
-        <div className="bg-yellow-50 border-2 border-yellow-200 rounded-xl p-8 shadow-md order-1 md:order-none">
+        {/* Columna izquierda */}
+        <div className="space-y-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-800">
+            “Regístrate hoy y asegura tu promoción de {" "}
+            <span className="text-green-600">GlucoVital</span>"
+          </h2>
+
+          {/* Se mantiene todo igual */}
+          <div className="space-y-6">
+            <div className="flex items-start gap-4">
+              <div className="flex-shrink-0 w-12 h-12 bg-pink-500 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                1
+              </div>
+              <div>
+                <h3 className="font-semibold text-gray-800 mb-1">PASO 1</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  <strong>Déjanos tus datos </strong> y activa tu precio promocional antes de que se agote. Solo toma unos segundos.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-4">
+              <div className="flex-shrink-0 w-12 h-12 bg-pink-500 rounded-full flex items-center justify-center text-white">
+                <Phone className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-gray-800 mb-1">PASO 2</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  <strong>Recibe una llamada rápida de nuestro epecialista experto </strong> para ayudarte a elegir la mejor opción para tu salud.</p>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-4">
+              <div className="flex-shrink-0 w-12 h-12 bg-pink-500 rounded-full flex items-center justify-center text-white">
+                <Truck className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-gray-800 mb-1">PASO 3</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  <strong>Recibe tu pedido sin riesgos,</strong> paga solo cuando llegue y empieza a mejorar tu bienestar desde el primer día
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* ICONOS */}
+          <div className="flex justify-center md:justify-start gap-8 pt-8">
+            <div className="text-center">
+              <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                <Shield className="w-6 h-6 text-gray-600" />
+              </div>
+              <p className="text-xs text-gray-600 font-medium">
+                Compra <br /> Segura
+              </p>
+            </div>
+
+            <div className="text-center">
+              <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                <Truck className="w-6 h-6 text-gray-600" />
+              </div>
+              <p className="text-xs text-gray-600 font-medium">
+                Envíos <br /> Rápidos
+              </p>
+            </div>
+
+            <div className="text-center">
+              <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                <CreditCard className="w-6 h-6 text-gray-600" />
+              </div>
+              <p className="text-xs text-gray-600 font-medium">
+                Contra <br /> Reembolso
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* FORMULARIO */}
+        <div className="bg-yellow-50 border-2 border-yellow-200 rounded-xl p-8 shadow-md">
 
           <div className="text-center mb-6">
             <h3 className="text-2xl md:text-3xl font-bold text-pink-600 mb-2">
@@ -132,78 +209,6 @@ export default function RegistrationForm() {
             </p>
           )}
         </div>
-
-        {/* 👉 DESPUÉS LOS PASOS */}
-        <div className="space-y-8 order-2 md:order-none">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-800">
-            “Regístrate hoy y asegura tu promoción de{" "}
-            <span className="text-green-600">GlucoVital</span>”
-          </h2>
-
-          <div className="space-y-6">
-
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-12 h-12 bg-pink-500 rounded-full flex items-center justify-center text-white font-bold text-lg">
-                1
-              </div>
-              <div>
-                <h3 className="font-semibold text-gray-800 mb-1">PASO 1</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  <strong>Déjanos tus datos</strong> y activa tu precio promocional antes de que se agote. Solo toma unos segundos.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-12 h-12 bg-pink-500 rounded-full flex items-center justify-center text-white">
-                <Phone className="w-6 h-6" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-gray-800 mb-1">PASO 2</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  <strong>Recibe una llamada rápida</strong> de nuestro especialista experto para ayudarte a elegir la mejor opción para tu salud.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-12 h-12 bg-pink-500 rounded-full flex items-center justify-center text-white">
-                <Truck className="w-6 h-6" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-gray-800 mb-1">PASO 3</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  <strong>Recibe tu pedido sin riesgos</strong>, paga solo cuando llegue y empieza a mejorar tu bienestar desde el primer día.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Iconos */}
-          <div className="flex justify-center md:justify-start gap-8 pt-8">
-            <div className="text-center">
-              <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-2">
-                <Shield className="w-6 h-6 text-gray-600" />
-              </div>
-              <p className="text-xs text-gray-600 font-medium">Compra <br /> Segura</p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-2">
-                <Truck className="w-6 h-6 text-gray-600" />
-              </div>
-              <p className="text-xs text-gray-600 font-medium">Envíos <br /> Rápidos</p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-2">
-                <CreditCard className="w-6 h-6 text-gray-600" />
-              </div>
-              <p className="text-xs text-gray-600 font-medium">Contra <br /> Reembolso</p>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
   )
