@@ -3,7 +3,7 @@ import mascot from "../../img/mascota.png"
 export default function FloatingMascot() {
   return (
     <div
-      className="fixed bottom-6 right-6 z- cursor-pointer transition-transform hover:scale-"
+      className="fixed bottom-0 right-0 mr-0 mb-2 z-50 cursor-pointer transition-transform hover:scale-105"
     >
       <img
         src={mascot}
