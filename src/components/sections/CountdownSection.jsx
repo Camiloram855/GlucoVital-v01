@@ -4,7 +4,7 @@ import { Clock } from "lucide-react"
 import { Button } from "../ui/button"
 
 export default function CountdownSection() {
-  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 18, seconds: 45 })
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 23, seconds: 45 })
 
   useEffect(() => {
     const timer = setInterval(() => {

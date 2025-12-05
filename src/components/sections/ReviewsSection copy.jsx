@@ -5,7 +5,9 @@ import imgLuis from "../../img/reseñas/image4.jpg"
 import imgCarmen from "../../img/reseñas/image5.jpg"
 import imgRoberto from "../../img/reseñas/image6.jpg"
 
+
 const ReviewsSection = () => {
+  // Datos de ejemplo para las reseñas
   const reviews = [
     {
       id: 1,
@@ -55,13 +57,14 @@ const ReviewsSection = () => {
     },
   ]
 
+  // Componente para renderizar las estrellas
   const StarRating = ({ rating }) => {
     return (
-      <div className="flex gap-0.5 mt-1">
+      <div className="flex gap-1">
         {[1, 2, 3, 4, 5].map((star) => (
           <svg
             key={star}
-            className={`w-4 h-4 ${star <= rating ? "text-yellow-400" : "text-gray-300"}`}
+            className={`w-5 h-5 ${star <= rating ? "text-yellow-400" : "text-gray-300"}`}
             fill="currentColor"
             viewBox="0 0 20 20"
           >
@@ -75,7 +78,7 @@ const ReviewsSection = () => {
   return (
     <section className="py-16 px-4 bg-gray-50">
       <div className="max-w-7xl mx-auto">
-        
+        {/* Título centrado */}
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Lo que dicen nuestros clientes</h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -83,34 +86,33 @@ const ReviewsSection = () => {
           </p>
         </div>
 
-        {/* GRID DE 3 COLUMNAS */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Cuadrícula de reseñas */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {reviews.map((review) => (
             <div
               key={review.id}
-              className="bg-white rounded-lg p-4 border border-gray-200"
+              className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100"
             >
-              
-              <div className="flex items-center mb-2">
+              {/* Header con foto y nombre */}
+              <div className="flex items-center mb-4">
                 <img
                   src={review.avatar}
                   alt={`Foto de ${review.name}`}
-                  className="w-10 h-10 rounded-full object-cover mr-3"
+                  className="w-12 h-12 rounded-full object-cover mr-4 border-2 border-gray-100"
                 />
                 <div>
-                  <h3 className="font-semibold text-gray-800 text-sm">{review.name}</h3>
+                  <h3 className="font-bold text-gray-900 text-lg">{review.name}</h3>
                   <StarRating rating={review.rating} />
                 </div>
               </div>
 
-              <p className="bg-gray-100 text-gray-800 p-3 rounded-lg text-sm leading-snug">
-                {review.comment}
-              </p>
-
+              {/* Comentario */}
+              <p className="text-gray-700 leading-relaxed text-sm">"{review.comment}"</p>
             </div>
           ))}
         </div>
 
+        {/* Call to action opcional */}
         <div className="text-center mt-12">
           <p className="text-gray-600 mb-4">¿Quieres ser parte de nuestros clientes satisfechos?</p>
         </div>

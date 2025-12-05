@@ -63,8 +63,8 @@ export default function RegistrationForm() {
         {/* Columna izquierda */}
         <div className="space-y-8">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-800">
-            ¿Cómo registrarte en{" "}
-            <span className="text-green-600">GlucoVital</span>?
+            “Regístrate hoy y asegura tu promoción de {" "}
+            <span className="text-green-600">GlucoVital</span>"
           </h2>
 
           {/* Se mantiene todo igual */}
@@ -76,8 +76,7 @@ export default function RegistrationForm() {
               <div>
                 <h3 className="font-semibold text-gray-800 mb-1">PASO 1</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  <strong>Comparte tus datos:</strong> Ingresa tu nombre y
-                  número de teléfono en el formulario seguro.
+                  <strong>Déjanos tus datos </strong> y activa tu precio promocional antes de que se agote. Solo toma unos segundos.
                 </p>
               </div>
             </div>
@@ -89,9 +88,7 @@ export default function RegistrationForm() {
               <div>
                 <h3 className="font-semibold text-gray-800 mb-1">PASO 2</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  <strong>Habla con nosotros:</strong> Un especialista te
-                  llamará para confirmar tu pedido.
-                </p>
+                  <strong>Recibe una llamada rápida de nuestro epecialista experto </strong> para ayudarte a elegir la mejor opción para tu salud.</p>
               </div>
             </div>
 
@@ -102,7 +99,7 @@ export default function RegistrationForm() {
               <div>
                 <h3 className="font-semibold text-gray-800 mb-1">PASO 3</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  <strong>Recibe y paga:</strong> Tu producto llegará rápido.
+                  <strong>Recibe tu pedido sin riesgos,</strong> paga solo cuando llegue y empieza a mejorar tu bienestar desde el primer día
                 </p>
               </div>
             </div>
@@ -147,12 +144,12 @@ export default function RegistrationForm() {
               ¡OFERTA 50% OFF!
             </h3>
             <p className="text-gray-600 mb-4">
-              Aprovecha esta rebaja exclusiva:
+              Activa ahora el precio especial antes de que la promoción cierre.
             </p>
 
             <div className="flex items-center justify-center gap-4 mb-4">
               <span className="text-lg text-gray-500 line-through animate-[zoom_1.5s_ease-in-out_infinite]">
-                $238000
+                $278000
               </span>
               <span className="text-3xl font-bold text-green-600 animate-[zoom_1.5s_ease-in-out_infinite]">
                 $119000

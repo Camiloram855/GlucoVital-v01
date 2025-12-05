@@ -7,22 +7,23 @@ const faqData = [
   {
     question: "¿Cómo funciona el proceso de compra?",
     answer: `¡Comprar en nuestra tienda es muy fácil! 
-    Primero, agrega a tu carrito los productos que deseas comprar.
-    Segundo, ingresa tu nombre completo, correo electrónico y teléfono de contacto en el formulario de compra.
-    Tercero, un representante se comunicará contigo para confirmar tu pedido y enviarlo.`,
+    Primero, Lee nuestro articulo, los testimonos y las presentaciones del producto para asegurarte de que es lo que necesitas.
+    Segundo, ingresa tu nombre completo, y teléfono de contacto en el formulario de compra.
+    Tercero, un especialista se comunicará contigo para confirmar tu pedido y enviarlo.`,
   },
   {
     question: "¿Cómo funcionan los envíos?",
-    answer: `Hacemos envíos a todo el país. En ciudades principales de 1-3 días hábiles, y en otras localidades de 3-7 días hábiles. 
+    answer: `Hacemos envíos a todo el país. En ciudades principales de 1-3 días hábiles, y no hacemos envios a veredas o fincas
+    pero si tienes una direccion alternativa lo podemos gestionar para que te llegue y llamen antes de 3-7 días hábiles
     Todos los pedidos incluyen número de guía para seguimiento.`,
   },
   {
     question: "¿Cómo se realizan los pagos?",
-    answer: `Aceptamos tarjetas débito, crédito, transferencias y pago contra entrega en algunas ciudades.`,
+    answer: `Aceptamos Pago contra entrega en todas las ciudades, tambien tarjeta de credito o debito a través de nuestra pasarela segura.`,
   },
   {
     question: "¿Aceptan tarjetas de crédito?",
-    answer: `Sí, aceptamos Visa, Mastercard y American Express a través de una pasarela segura con encriptación SSL.`,
+    answer: `Sí, aceptamos Visa, Mastercard, Nequi, Daviplata y PSE.`,
   },
 ]
 

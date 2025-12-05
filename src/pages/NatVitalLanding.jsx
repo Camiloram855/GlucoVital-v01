@@ -12,6 +12,8 @@ import RibbonButton from "../components/ui/RibbonButton"
 import GlucoVitalSection from "../components/sections/GlucoVitalSection"
 import FaqSection from "../components/sections/FaqSection"
 import ReviewsSection from "../components/sections/ReviewsSection"
+import FloatingMascot from "../components/ui/FloatingMascot"
+
 
 
 export default function NatVitalLanding() {
@@ -35,7 +37,8 @@ export default function NatVitalLanding() {
 
       </main>
       <Footer /> {/* 👈 Footer agregado */}
-      <RibbonButton />
+      
+      <FloatingMascot /> 
     </div>
   )
 }
