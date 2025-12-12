@@ -20,12 +20,13 @@ export default function HeroSection() {
 
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
         <h1 className="text-4xl md:text-7xl font-bold text-white mb-6">
-          Descubre el Poder de
+          Controla tu azúcar en 7 días con
           <span className="text-emerald-300 block">GlucoVital</span>
         </h1>
 
         <p className="text-lg md:text-2xl text-white mb-8 max-w-2xl mx-auto leading-relaxed">
-          GlucoVital te ofrece la fórmula natural más pura para mejorar tu salud y bienestar de forma integral.
+          Sin dietas extremas ni medicamentos fuertes.
+          100% natural aprobada por miles de colombianos.
         </p>
 
         <Button
@@ -37,7 +38,7 @@ export default function HeroSection() {
             }
           }}
         >
-          Comprar Ahora
+          Hablar con especialista
         </Button>
       </div>
     </section>
