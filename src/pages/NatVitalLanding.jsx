@@ -1,4 +1,5 @@
 // src/pages/NatVitalLanding.jsx
+import { useEffect } from "react"
 import HeroSection from "../components/sections/HeroSection"
 import BenefitsSection from "../components/sections/BenefitsSection"
 import CountdownSection from "../components/sections/CountdownSection"
@@ -17,6 +18,15 @@ import FloatingMascot from "../components/ui/FloatingMascot"
 
 
 export default function NatVitalLanding() {
+    useEffect(() => {
+    if (window.fbq) {
+      window.fbq('track', 'ViewContent', {
+        content_name: 'NatVital - GlucoVital',
+        content_category: 'Salud',
+        currency: 'COP'
+      })
+    }
+  }, [])
   return (
     <div className="min-h-screen bg-white flex flex-col">
       <main className="flex-grow">

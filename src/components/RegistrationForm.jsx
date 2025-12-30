@@ -29,33 +29,44 @@ export default function RegistrationForm() {
     }))
   }
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    setLoading(true)
-    setSuccess(null)
+const handleSubmit = async (e) => {
+  e.preventDefault()
+  setLoading(true)
+  setSuccess(null)
 
-    const templateParams = {
-      name: formData.name,
-      phone: formData.phone,
-    }
-
-    try {
-      await emailjs.send(
-        "service_tign351",
-        "template_cn0c8eg",
-        templateParams,
-        "kK2OReJJQoRu00rfG"
-      )
-
-      setSuccess(true)
-      setFormData({ name: "", phone: "" })
-    } catch (error) {
-      console.error("Error enviando email:", error)
-      setSuccess(false)
-    }
-
-    setLoading(false)
+  const templateParams = {
+    name: formData.name,
+    phone: formData.phone,
   }
+
+  try {
+    await emailjs.send(
+      "service_tign351",
+      "template_cn0c8eg",
+      templateParams,
+      "kK2OReJJQoRu00rfG"
+    )
+
+    // 🔥 EVENTO LEAD (SOLO SI EL ENVÍO FUE EXITOSO)
+    if (window.fbq) {
+      window.fbq('track', 'Lead', {
+        content_name: 'NatVital - GlucoVital',
+        value: 1,
+        currency: 'COP'
+      })
+    }
+
+    setSuccess(true)
+    setFormData({ name: "", phone: "" })
+
+  } catch (error) {
+    console.error("Error enviando email:", error)
+    setSuccess(false)
+  }
+
+  setLoading(false)
+}
+
 
   return (
     <div className="relative">
